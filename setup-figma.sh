@@ -87,10 +87,17 @@ try:
     if 'mcpServers' not in data:
         data['mcpServers'] = {}
     
-    data['mcpServers']['Framelink Figma MCP'] = {
-        'command': 'npx',
-        'args': ['-y', 'figma-developer-mcp', '--figma-api-key=$API_KEY', '--stdio']
+    data['mcpServers']['cursor-talk-to-figma-mcp'] = {
+          'command': 'npx',
+          'args': ['-y',
+                '@smithery/cli@latest',
+                'run',
+                '@sonnylazuardi/cursor-talk-to-figma-mcp',
+                '--key',
+                '$API_KEY',
+              ]
     }
+
     
     with open('$GEMINI_SETTINGS_FILE', 'w') as f:
         json.dump(data, f, indent=2)
